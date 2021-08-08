@@ -1,11 +1,10 @@
 {
-  "name": "@itsmapleleaf/eslint-config-setup",
+  "name": "@itsmapleleaf/setup-eslint",
   "type": "module",
   "description": "my cool and awesome personal eslint config setter upper",
   "authors": "MapleLeaf",
   "version": "1.0.0",
   "dependencies": {
-    "@itsmapleleaf/eslint-config-setup": "^1.0.0",
     "cpy": "8.1.2",
     "execa": "5.1.1",
     "ora": "5.4.1"
@@ -14,6 +13,6 @@
     "@types/node": "16.4.13"
   },
   "bin": {
-    "setup-eslint-config": "setup.js"
+    "setup-eslint": "setup.js"
   }
 }
