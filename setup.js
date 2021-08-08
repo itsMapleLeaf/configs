@@ -17,12 +17,10 @@ const packages = [
   "eslint-plugin-react-hooks",
   "eslint-plugin-jsx-a11y",
 ]
+
 try {
   console.info(`Installing packages...`)
-  await execa("pnpm", ["add", "--save-dev", "--workspace-root", ...packages], {
-    // stdio: "inherit",
-    windowsVerbatimArguments: true,
-  })
+  await execa("pnpm", ["add", "--save-dev", "--workspace-root", ...packages])
 
   console.info("Copying eslint config into cwd...")
   await cpy(join(__dirname, ".eslintrc.json"), process.cwd())
