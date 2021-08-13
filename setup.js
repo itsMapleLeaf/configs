@@ -20,7 +20,7 @@ const packages = [
 
 try {
   console.info(`Installing packages...`)
-  await execa("pnpm", ["add", "--save-dev", "--workspace-root", ...packages])
+  await execa("pnpm", ["add", "--save-dev", ...packages])
 
   console.info("Copying eslint config into cwd...")
   await cpy(join(__dirname, ".eslintrc.json"), process.cwd())
