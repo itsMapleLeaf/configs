@@ -41,7 +41,8 @@
     "jsx-a11y/no-onchange": "off",
     "class-methods-use-this": "warn",
     "no-useless-rename": "warn",
-    "object-shorthand": "warn"
+    "object-shorthand": "warn",
+    "no-console": "warn"
   },
   "ignorePatterns": ["**/node_modules/**", "**/dist/**", "src/generated/**"],
   "settings": {
