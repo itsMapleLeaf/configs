@@ -8,9 +8,13 @@ import { basename, dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
 import ora from "ora"
 
+/**
+ * @typedef {import("./types").Action} Action
+ */
+
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 
-/** @param {import("./types").Action[]} actions */
+/** @param {Action[]} actions */
 async function runActions(actions) {
   const spinner = ora()
   for (const action of actions) {
@@ -27,7 +31,7 @@ async function runActions(actions) {
 
 /**
  * @param {string[]} packages
- * @returns {import("./types").Action}
+ * @returns {Action}
  */
 function installPackagesAction(packages) {
   return {
@@ -40,7 +44,7 @@ function installPackagesAction(packages) {
 
 /**
  * @param {string} localFilePath
- * @returns {import("./types").Action}
+ * @returns {Action}
  */
 function copyFileAction(localFilePath) {
   return {
@@ -53,6 +57,7 @@ function copyFileAction(localFilePath) {
 /**
  * @param {string} scriptName
  * @param {string} scriptString
+ * @returns {Action}
  */
 function addScriptAction(scriptName, scriptString) {
   return {
