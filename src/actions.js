@@ -3,7 +3,7 @@ import execa from "execa"
 import { readFile, writeFile } from "node:fs/promises"
 import { basename, join } from "node:path"
 import ora from "ora"
-import { scriptDir } from "./setup"
+import { packageRoot } from "./constants"
 
 /** @param {Action[]} actions */
 export async function runActions(actions) {
@@ -39,7 +39,7 @@ export function copyFileAction(localFilePath) {
   return {
     description: `Copying ${basename(localFilePath)} into project`,
     run: async () => {
-      await cpy(join(scriptDir, localFilePath), process.cwd())
+      await cpy(join(packageRoot, localFilePath), process.cwd())
     },
   }
 }

@@ -1,19 +1,17 @@
 // @ts-check
 import chalk from "chalk"
 import { readdir } from "node:fs/promises"
-import { dirname, join } from "node:path"
-import { fileURLToPath } from "node:url"
+import { join } from "node:path"
 import {
   addScriptAction,
   copyFileAction,
   installPackagesAction,
   runActions,
 } from "./actions"
-
-export const scriptDir = dirname(fileURLToPath(import.meta.url))
+import { packageRoot } from "./constants"
 
 try {
-  const configFiles = await readdir(join(scriptDir, "../configs"))
+  const configFiles = await readdir(join(packageRoot, "./configs"))
 
   await runActions([
     installPackagesAction([
@@ -26,7 +24,7 @@ try {
       "eslint-plugin-jsx-a11y",
     ]),
 
-    ...configFiles.map((basename) => copyFileAction(`../configs/${basename}`)),
+    ...configFiles.map((basename) => copyFileAction(`./configs/${basename}`)),
 
     addScriptAction("lint", "eslint --ext js,ts,tsx ."),
     addScriptAction("format", "prettier --write ."),
