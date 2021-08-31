@@ -3,7 +3,7 @@ import execa from "execa"
 import { readFile, writeFile } from "node:fs/promises"
 import { basename, join } from "node:path"
 import ora from "ora"
-import { packageRoot } from "./constants"
+import { packageRoot } from "./constants.js"
 
 /** @param {Action[]} actions */
 export async function runActions(actions) {

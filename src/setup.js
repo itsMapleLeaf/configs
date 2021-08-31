@@ -7,8 +7,8 @@ import {
   copyFileAction,
   installPackagesAction,
   runActions,
-} from "./actions"
-import { packageRoot } from "./constants"
+} from "./actions.js"
+import { packageRoot } from "./constants.js"
 
 try {
   const configFiles = await readdir(join(packageRoot, "./configs"))
