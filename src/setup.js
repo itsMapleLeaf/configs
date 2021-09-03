@@ -22,6 +22,7 @@ try {
       "eslint-plugin-react",
       "eslint-plugin-react-hooks",
       "eslint-plugin-jsx-a11y",
+      "prettier",
     ]),
 
     ...configFiles.map((basename) => copyFileAction(`./configs/${basename}`)),
