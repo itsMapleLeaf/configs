@@ -32,10 +32,11 @@ export function installPackagesAction(packages) {
   }
 }
 /**
+ * Copies a local file to the project
  * @param {string} localFilePath
  * @returns {Action}
  */
-export function copyFileAction(localFilePath) {
+export function copyFileToProjectAction(localFilePath) {
   return {
     description: `Copying ${basename(localFilePath)} into project`,
     run: async () => {
@@ -63,4 +64,42 @@ export function addScriptAction(scriptName, scriptString) {
       await writeFile(packageJsonPath, JSON.stringify(pkg, null, 2))
     },
   }
+}
+
+/**
+ * An action to update the package.json file
+ *
+ * @param {string} description Generic description of the action
+ * @param {(pkg: import("type-fest").JsonObject) => Promise<unknown> | void} fn
+ */
+export function updatePackageJsonAction(description, fn) {
+  return {
+    description,
+    run: async () => {
+      const packageJsonPath = join(process.cwd(), "package.json")
+
+      /** @type {import("type-fest").JsonObject} */
+      const pkg = JSON.parse(
+        await readFile(packageJsonPath, { encoding: "utf-8" }),
+      )
+
+      await fn(pkg)
+      await writeFile(packageJsonPath, JSON.stringify(pkg, null, 2))
+    },
+  }
+}
+
+/**
+ * An action to set a property in the package.json file
+ *
+ * @param {string} property The property to set
+ * @param {import("type-fest").JsonValue} value The value to add
+ */
+export function setPackageJsonPropertyAction(property, value) {
+  return updatePackageJsonAction(
+    `Setting ${property} to ${value} in package.json`,
+    (pkg) => {
+      pkg[property] = value
+    },
+  )
 }
