@@ -6,7 +6,12 @@
   "version": "0.0.0",
   "files": [
     "src",
-    "configs"
+    "assets",
+    "eslint",
+    "prettier",
+    "tsconfig.app.json",
+    "tsconfig.base.json",
+    "tsconfig.lib.json"
   ],
   "dependencies": {
     "chalk": "4.1.2",
