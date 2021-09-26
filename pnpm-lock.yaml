@@ -1,7 +1,6 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@itsmapleleaf/configs': link:C:/dev/setup-project
   '@types/node': 16.7.1
   '@typescript-eslint/eslint-plugin': 4.31.1
   '@typescript-eslint/parser': 4.31.1
@@ -26,7 +25,6 @@ dependencies:
   type-fest: 2.3.3
 
 devDependencies:
-  '@itsmapleleaf/configs': 'link:'
   '@types/node': 16.7.1
   '@typescript-eslint/eslint-plugin': 4.31.1_19519d7c6191e4ea631908823a0e5a38
   '@typescript-eslint/parser': 4.31.1_f8ed5431742f75332c3083279db44140
