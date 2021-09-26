@@ -46,5 +46,8 @@
     "extends": [
       "./eslint"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
