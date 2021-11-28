@@ -40,7 +40,15 @@ module.exports = {
     "react-hooks/exhaustive-deps": ["warn"],
     "react/react-in-jsx-scope": ["off"],
   },
-  ignorePatterns: ["**/node_modules/**", "**/dist/**", "src/generated/**"],
+  ignorePatterns: [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/release/**",
+    "**/docs/**",
+    "**/.cache/**",
+    "src/generated/**",
+  ],
   settings: {
     react: { version: "latest" },
   },
