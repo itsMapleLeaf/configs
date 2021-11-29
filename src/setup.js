@@ -46,7 +46,7 @@ try {
     ),
 
     updatePackageJsonAction("Add extends to eslint config", (pkg) => {
-      if (!isJsonObject(pkg.eslintConfig)) {
+      if (pkg.eslintConfig == null || !isJsonObject(pkg.eslintConfig)) {
         pkg.eslintConfig = {}
       }
 

@@ -41,7 +41,7 @@
     "lint": "eslint --ext js,ts,tsx .",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "release": "release-it"
+    "release": "pnpm typecheck && release-it"
   },
   "prettier": "./prettier",
   "eslintConfig": {
