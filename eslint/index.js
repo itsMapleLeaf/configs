@@ -32,7 +32,7 @@ module.exports = {
     "jsx-a11y/no-onchange": "off",
     "no-redeclare": "off",
     "@typescript-eslint/no-redeclare": "warn",
-    "no-console": ["warn", { allow: ["warn", "error"] }],
+    "no-console": ["warn", { allow: ["warn", "error", "info"] }],
     "no-undef": "off",
     "no-unused-vars": "off",
     "no-useless-rename": "warn",
