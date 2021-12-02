@@ -39,6 +39,7 @@ module.exports = {
     "object-shorthand": "warn",
     "react-hooks/exhaustive-deps": ["warn"],
     "react/react-in-jsx-scope": ["off"],
+    "require-await": "warn",
   },
   ignorePatterns: [
     "**/node_modules/**",
