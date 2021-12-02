@@ -22,7 +22,7 @@ module.exports = {
     project: "./tsconfig.json",
     extraFileExtensions: [".cjs", ".mjs"],
   },
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ["react", "@typescript-eslint", "import"],
   rules: {
     "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
     "@typescript-eslint/consistent-type-imports": "warn",
@@ -40,6 +40,7 @@ module.exports = {
     "react-hooks/exhaustive-deps": ["warn"],
     "react/react-in-jsx-scope": ["off"],
     "require-await": "warn",
+    "import/no-unused-modules": ["warn", { unusedExports: true }],
   },
   ignorePatterns: [
     "**/node_modules/**",
@@ -48,9 +49,13 @@ module.exports = {
     "**/release/**",
     "**/docs/**",
     "**/.cache/**",
-    "src/generated/**",
+    "**/generated/**",
   ],
   settings: {
-    react: { version: "latest" },
+    "react": { version: "latest" },
+    "import/parsers": { "@typescript-eslint/parser": [".ts", ".tsx"] },
+    "import/resolver": {
+      typescript: {},
+    },
   },
 }
