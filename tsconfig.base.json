@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "lib": ["dom", "dom.iterable", "es2020"],
-    "jsx": "react-jsx",
+    "target": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react",
     "module": "esnext",
     "moduleResolution": "node",
     "allowJs": true,

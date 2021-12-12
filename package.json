@@ -16,6 +16,7 @@
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "compile": "tsup-node src/main.ts --target=node16 --format=esm",
+    "test": "esmo test/run-test.ts",
     "release": "pnpm compile && release-it"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "cpy": "^8.1.2",
     "execa": "^6.0.0",
     "ora": "^6.0.1",
+    "prompt-fns": "^0.1.0",
     "type-fest": "^2.8.0"
   },
   "devDependencies": {
@@ -37,10 +39,14 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "esmo": "^0.12.1",
     "prettier": "^2.5.1",
     "release-it": "^14.11.8",
     "tsup": "^5.11.1",
     "typescript": "^4.5.3"
+  },
+  "resolutions": {
+    "esbuild": "0.14.2"
   },
   "bin": {
     "setup-configs": "./dist/main.js"
