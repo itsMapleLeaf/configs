@@ -3,10 +3,15 @@ import { execa } from "execa"
 import { readFile, writeFile } from "node:fs/promises"
 import { basename, join } from "node:path"
 import ora from "ora"
+import type { JsonObject, JsonValue } from "type-fest"
 import { packageRoot } from "./constants.js"
 
-/** @param {Action[]} actions */
-export async function runActions(actions) {
+type Action = {
+  description: string
+  run: () => Promise<unknown> | void
+}
+
+export async function runActions(actions: Action[]) {
   const spinner = ora()
   for (const action of actions) {
     try {
@@ -19,11 +24,8 @@ export async function runActions(actions) {
     }
   }
 }
-/**
- * @param {string[]} packages
- * @returns {Action}
- */
-export function installPackagesAction(packages) {
+
+export function installPackagesAction(packages: string[]): Action {
   return {
     description: `Installing packages with pnpm`,
     run: async () => {
@@ -31,12 +33,8 @@ export function installPackagesAction(packages) {
     },
   }
 }
-/**
- * Copies a local file to the project
- * @param {string} localFilePath
- * @returns {Action}
- */
-export function copyFileToProjectAction(localFilePath) {
+
+export function copyFileToProjectAction(localFilePath: string): Action {
   return {
     description: `Copying ${basename(localFilePath)} into project`,
     run: async () => {
@@ -44,12 +42,11 @@ export function copyFileToProjectAction(localFilePath) {
     },
   }
 }
-/**
- * @param {string} scriptName
- * @param {string} scriptString
- * @returns {Action}
- */
-export function addScriptAction(scriptName, scriptString) {
+
+export function addScriptAction(
+  scriptName: string,
+  scriptString: string,
+): Action {
   return {
     description: `Adding ${scriptName} script`,
     run: async () => {
@@ -66,20 +63,16 @@ export function addScriptAction(scriptName, scriptString) {
   }
 }
 
-/**
- * An action to update the package.json file
- *
- * @param {string} description Generic description of the action
- * @param {(pkg: import("type-fest").JsonObject) => Promise<unknown> | void} fn
- */
-export function updatePackageJsonAction(description, fn) {
+export function updatePackageJsonAction(
+  description: string,
+  fn: (pkg: JsonObject) => Promise<unknown> | void,
+) {
   return {
     description,
     run: async () => {
       const packageJsonPath = join(process.cwd(), "package.json")
 
-      /** @type {import("type-fest").JsonObject} */
-      const pkg = JSON.parse(
+      const pkg: JsonObject = JSON.parse(
         await readFile(packageJsonPath, { encoding: "utf-8" }),
       )
 
@@ -89,13 +82,10 @@ export function updatePackageJsonAction(description, fn) {
   }
 }
 
-/**
- * An action to set a property in the package.json file
- *
- * @param {string} property The property to set
- * @param {import("type-fest").JsonValue} value The value to add
- */
-export function setPackageJsonPropertyAction(property, value) {
+export function setPackageJsonPropertyAction(
+  property: string,
+  value: JsonValue,
+) {
   return updatePackageJsonAction(
     `Setting ${property} to ${value} in package.json`,
     (pkg) => {

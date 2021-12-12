@@ -5,14 +5,19 @@
   "authors": "MapleLeaf",
   "version": "1.0.4",
   "files": [
-    "src",
+    "dist",
     "assets",
     "eslint",
     "prettier",
-    "tsconfig.app.json",
-    "tsconfig.base.json",
-    "tsconfig.lib.json"
+    "tsconfig.base.json"
   ],
+  "scripts": {
+    "lint": "eslint --ext js,ts,tsx .",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "compile": "tsup-node src/main.ts --target=node16 --format=esm",
+    "release": "pnpm compile && release-it"
+  },
   "dependencies": {
     "@types/eslint": "^8.2.1",
     "chalk": "^5.0.0",
@@ -26,24 +31,19 @@
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
     "eslint": "^8.4.1",
-    "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "eslint-plugin-import": "^2.25.3",
     "prettier": "^2.5.1",
     "release-it": "^14.11.8",
+    "tsup": "^5.11.1",
     "typescript": "^4.5.3"
   },
   "bin": {
-    "setup-configs": "./src/setup.js"
-  },
-  "scripts": {
-    "lint": "eslint --ext js,ts,tsx .",
-    "format": "prettier --write .",
-    "typecheck": "tsc --noEmit",
-    "release": "pnpm typecheck && release-it"
+    "setup-configs": "./dist/main.js"
   },
   "prettier": "./prettier",
   "eslintConfig": {

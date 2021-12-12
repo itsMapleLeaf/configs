@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { existsSync } from "node:fs"
-import { createRequire } from "node:module"
 import { join, posix } from "node:path"
+import pkg from "../package.json"
 import {
   addScriptAction,
   copyFileToProjectAction,
@@ -12,11 +12,6 @@ import {
 } from "./actions.js"
 import { packageRoot } from "./constants.js"
 import { isJsonObject } from "./json.js"
-
-const require = createRequire(import.meta.url)
-
-/** @type {import("type-fest").JsonObject} */
-const pkg = require("../package.json")
 
 const isLocal = existsSync(join(packageRoot, ".islocal"))
 
