@@ -14,27 +14,27 @@
     "tsconfig.lib.json"
   ],
   "dependencies": {
-    "@types/eslint": "^8.2.0",
-    "chalk": "5.0.0",
-    "cpy": "8.1.2",
-    "execa": "6.0.0",
-    "ora": "6.0.1",
-    "type-fest": "2.6.0"
+    "@types/eslint": "^8.2.1",
+    "chalk": "^5.0.0",
+    "cpy": "^8.1.2",
+    "execa": "^6.0.0",
+    "ora": "^6.0.1",
+    "type-fest": "^2.8.0"
   },
   "devDependencies": {
-    "@types/node": "16.11.10",
-    "@typescript-eslint/eslint-plugin": "5.4.0",
-    "@typescript-eslint/parser": "5.4.0",
-    "eslint": "8.3.0",
+    "@types/node": "^16.11.12",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
+    "eslint": "^8.4.1",
     "eslint-import-resolver-typescript": "^2.5.0",
-    "eslint-config-prettier": "8.3.0",
-    "eslint-plugin-jsx-a11y": "6.5.1",
-    "eslint-plugin-react": "7.27.1",
-    "eslint-plugin-react-hooks": "4.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-import": "^2.25.3",
-    "prettier": "2.5.0",
-    "release-it": "14.11.8",
-    "typescript": "4.5.2"
+    "prettier": "^2.5.1",
+    "release-it": "^14.11.8",
+    "typescript": "^4.5.3"
   },
   "bin": {
     "setup-configs": "./src/setup.js"
