@@ -1,6 +1,7 @@
 import chalk from "chalk"
 import cpy from "cpy"
 import { execa } from "execa"
+import { difference, flow, uniq } from "lodash-es"
 import { readFile, writeFile } from "node:fs/promises"
 import { join } from "node:path"
 import { oraPromise } from "ora"
@@ -47,13 +48,18 @@ for (const feature of allFeatures) {
   context.ignoredPaths.push(...(feature.ignoredPaths ?? []))
 }
 
-const dependencies = features.flatMap(
-  (feature) => feature.installDependencies?.(context) ?? [],
+const dependencies = uniq(
+  features.flatMap((feature) => feature.installDependencies?.(context) ?? []),
 )
 
-const devDependencies = features.flatMap(
+const devDependencies = flow(
+  (features: Feature[]) =>
+    features.flatMap(
   (feature) => feature.installDevDependencies?.(context) ?? [],
-)
+    ),
+  (features) => uniq(features),
+  (features) => difference(features, dependencies),
+)(features)
 
 if (dependencies.length > 0) {
   await oraPromise(

@@ -4,8 +4,8 @@ overrides:
   esbuild: 0.14.2
 
 specifiers:
-  '@itsmapleleaf/configs': link:/home/maple/dev/configs
   '@types/eslint': ^8.2.1
+  '@types/lodash-es': ^4.17.5
   '@types/node': ^16.11.12
   '@typescript-eslint/eslint-plugin': ^5.6.0
   '@typescript-eslint/parser': ^5.6.0
@@ -21,6 +21,7 @@ specifiers:
   eslint-plugin-unicorn: ^39.0.0
   esmo: ^0.12.1
   execa: ^6.0.0
+  lodash-es: ^4.17.21
   ora: ^6.0.1
   prettier: ^2.5.1
   prompt-fns: ^0.1.0
@@ -30,11 +31,12 @@ specifiers:
   typescript: ^4.5.3
 
 dependencies:
-  '@itsmapleleaf/configs': 'link:'
   '@types/eslint': 8.2.1
+  '@types/lodash-es': 4.17.5
   chalk: 5.0.0
   cpy: 8.1.2
   execa: 6.0.0
+  lodash-es: 4.17.21
   ora: 6.0.1
   prompt-fns: 0.1.0
   type-fest: 2.8.0
@@ -544,6 +546,16 @@ packages:
     dependencies:
       '@types/node': 16.11.12
     dev: true
+
+  /@types/lodash-es/4.17.5:
+    resolution: {integrity: sha512-SHBoI8/0aoMQWAgUHMQ599VM6ZiSKg8sh/0cFqqlQQMyY9uEplc0ULU5yQNzcvdR4ZKa0ey8+vFmahuRbOCT1A==}
+    dependencies:
+      '@types/lodash': 4.14.178
+    dev: false
+
+  /@types/lodash/4.14.178:
+    resolution: {integrity: sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==}
+    dev: false
 
   /@types/minimatch/3.0.5:
     resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==}
@@ -3151,6 +3163,10 @@ packages:
     dependencies:
       p-locate: 4.1.0
     dev: true
+
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
