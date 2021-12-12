@@ -1,11 +1,6 @@
 import { posix } from "node:path"
-import pkg from "../../package.json"
-import { packageRoot } from "../constants.js"
 import type { Feature } from "../feature"
 import { isJsonObject } from "../json.js"
-
-const getPackageName = () =>
-  typeof pkg.name === "string" ? pkg.name : packageRoot
 
 export const eslintFeature: Feature = {
   name: "ESLint",
