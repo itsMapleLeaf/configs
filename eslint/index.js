@@ -1,4 +1,5 @@
 /** @type {import('eslint').Linter.Config} */
+// eslint-disable-next-line unicorn/prefer-module
 module.exports = {
   env: {
     browser: true,
@@ -10,6 +11,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:unicorn/recommended",
     "prettier",
   ],
   parser: "@typescript-eslint/parser",
@@ -41,6 +43,10 @@ module.exports = {
     "react/react-in-jsx-scope": ["off"],
     "require-await": "warn",
     "import/no-unused-modules": ["warn", { unusedExports: true }],
+    "unicorn/prevent-abbreviations": [
+      "warn",
+      { replacements: { props: false, args: false } },
+    ],
   },
   ignorePatterns: [
     "**/node_modules/**",

@@ -120,5 +120,5 @@ for (const { updatePackageJson } of features) {
 
 await writeFile(
   join(process.cwd(), "package.json"),
-  JSON.stringify(projectPackageJson, null, 2),
+  JSON.stringify(projectPackageJson, undefined, 2),
 )

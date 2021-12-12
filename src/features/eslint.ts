@@ -13,6 +13,7 @@ export const eslintFeature: Feature = {
     "eslint-plugin-jsx-a11y",
     "eslint-plugin-react-hooks",
     "eslint-plugin-react",
+    "eslint-plugin-unicorn",
     "eslint",
     "prettier",
   ],
