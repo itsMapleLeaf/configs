@@ -4,6 +4,7 @@ import type { ProjectContext } from "./project-context"
 export type Feature = {
   name: string
   ignoredPaths?: string[]
+  initiallyChecked?: (context: ProjectContext) => boolean
   installDependencies?: (context: ProjectContext) => string[]
   installDevDependencies?: (context: ProjectContext) => string[]
   copyFiles?: (

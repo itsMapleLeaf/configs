@@ -10,10 +10,27 @@ import type { JsonObject } from "type-fest"
 import packageJson from "../package.json"
 import { packageRoot } from "./constants.js"
 import type { Feature } from "./feature.js"
+import { compileWithTsupFeature } from "./features/compile-with-tsup.js"
 import { eslintFeature } from "./features/eslint.js"
 import { prettierFeature } from "./features/prettier.js"
+import { runWithEsmoFeature } from "./features/run-with-esmo.js"
+import { tailwindFeature } from "./features/tailwind.js"
+import { testWithAvaFeature } from "./features/test-with-ava.js"
+import { typescriptFeature } from "./features/typescript.js"
+import { viteFeature } from "./features/vite.js"
 import { isJsonObject } from "./json.js"
 import type { ProjectContext } from "./project-context.js"
+
+const allFeatures: Feature[] = [
+  compileWithTsupFeature,
+  eslintFeature,
+  prettierFeature,
+  runWithEsmoFeature,
+  tailwindFeature,
+  testWithAvaFeature,
+  typescriptFeature,
+  viteFeature,
+]
 
 console.info(
   `${chalk.cyan`i`} Current working directory:`,
@@ -27,13 +44,11 @@ const context: ProjectContext = {
   }),
   environment: await promptList({
     message: "Where is the code running?",
-    choices: ["browser", "node"],
+    choices: ["node", "browser"],
   }),
-  ignoredPaths: [],
+  ignoredPaths: ["node_modules", ".vscode"],
   selfPackageName: packageJson.name,
 }
-
-const allFeatures: Feature[] = [prettierFeature, eslintFeature]
 
 const features = await promptCheckboxList({
   message: "Choose your features:",
@@ -41,7 +56,9 @@ const features = await promptCheckboxList({
     name: feature.name,
     value: feature,
   })),
-  fallback: allFeatures,
+  fallback: allFeatures.filter(
+    (feature) => feature.initiallyChecked?.(context) ?? true,
+  ),
 })
 
 for (const feature of allFeatures) {
@@ -55,7 +72,7 @@ const dependencies = uniq(
 const devDependencies = flow(
   (features: Feature[]) =>
     features.flatMap(
-  (feature) => feature.installDevDependencies?.(context) ?? [],
+      (feature) => feature.installDevDependencies?.(context) ?? [],
     ),
   (features) => uniq(features),
   (features) => difference(features, dependencies),
@@ -107,12 +124,12 @@ const addScripts = features.flatMap(
   (feature) => feature.addScripts?.(context) ?? [],
 )
 
-const scripts = isJsonObject(projectPackageJson.scripts)
-  ? projectPackageJson.scripts
-  : {}
+if (!isJsonObject(projectPackageJson.scripts)) {
+  projectPackageJson.scripts = {}
+}
 
 for (const { name, command } of addScripts) {
-  scripts[name] = command
+  projectPackageJson.scripts[name] = command
   console.info(`Added ${chalk.bold.cyan(name)} script`)
 }
 

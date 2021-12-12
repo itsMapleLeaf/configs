@@ -47,7 +47,8 @@
     "prettier": "^2.5.1",
     "release-it": "^14.11.8",
     "tsup": "^5.11.1",
-    "typescript": "^4.5.3"
+    "typescript": "^4.5.3",
+    "vite": "^2.7.1"
   },
   "resolutions": {
     "esbuild": "0.14.2"
