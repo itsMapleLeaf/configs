@@ -1,0 +1,3 @@
+- [ ] every feature should have an id
+- [ ] prefix with that id during logging
+- [ ] might be helpful for features to know which other feature IDs are enabled
