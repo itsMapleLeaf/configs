@@ -1,9 +1,3 @@
 {
-  "extends": "./tsconfig.base",
-  "compilerOptions": {
-    "noEmit": true,
-    "allowJs": true,
-    "checkJs": true
-  },
-  "exclude": ["node_modules"]
+  "extends": "./tsconfig.base"
 }

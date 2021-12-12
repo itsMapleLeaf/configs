@@ -14,7 +14,16 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "noEmit": true
   },
-  "exclude": ["node_modules", "dist", "build", ".next", ".cache"]
+  "exclude": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/release/**",
+    "**/coverage/**",
+    "**/.next/**",
+    "**/.cache/**"
+  ]
 }
