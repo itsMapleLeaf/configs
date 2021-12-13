@@ -5,3 +5,4 @@
 ## feature ideas
 
 - [ ] cypress
+- [ ] react
