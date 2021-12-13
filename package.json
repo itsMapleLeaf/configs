@@ -1,7 +1,7 @@
 {
   "name": "@itsmapleleaf/configs",
   "type": "module",
-  "description": "my cool and awesome configs for linting and stuff",
+  "description": "my cool and awesome configurator of various things",
   "authors": "MapleLeaf",
   "version": "1.1.0-0",
   "files": [
