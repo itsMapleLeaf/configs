@@ -17,6 +17,6 @@ export const compileWithTsupFeature: Feature = {
       context.projectType === "library" ? "--dts" : "",
     ].join(" ")
 
-    return [{ name: "compile", command }]
+    return [{ name: "build", command }]
   },
 }
