@@ -12,6 +12,9 @@
   - library-browser
   - library-node
   - electron
+- [ ] for features dependent on other features, should write that as a separate feature to avoid circular dependencies
+  - e.g. the vite feature depends on tailwind, should generate the vite index.html in a separate feature (?)
+- [ ] always-on features, relevant to ^
 
 ## feature ideas
 
