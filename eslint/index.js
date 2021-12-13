@@ -48,6 +48,7 @@ module.exports = {
       "warn",
       { replacements: { props: false, args: false } },
     ],
+    "unicorn/no-array-callback-reference": "off",
   },
   ignorePatterns: [
     "**/node_modules/**",
