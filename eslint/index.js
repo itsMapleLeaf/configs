@@ -46,7 +46,7 @@ module.exports = {
     "import/no-unused-modules": ["warn", { unusedExports: true }],
     "unicorn/prevent-abbreviations": [
       "warn",
-      { replacements: { props: false, args: false } },
+      { replacements: { props: false, args: false, ref: false } },
     ],
     "unicorn/no-array-callback-reference": "off",
   },
