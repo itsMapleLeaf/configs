@@ -1,7 +1,7 @@
 import type { Feature } from "../feature.js"
 
-export const compileWithTsupFeature: Feature = {
-  name: "Compile with tsup",
+export const tsupFeature: Feature = {
+  name: "tsup (Build)",
   initiallyChecked: (context) =>
     context.environment === "node" && context.projectType === "library",
   ignoredPaths: ["dist"],

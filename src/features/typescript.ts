@@ -2,7 +2,7 @@ import { isString } from "lodash-es"
 import type { Feature } from "../feature.js"
 
 export const typescriptFeature: Feature = {
-  name: "TypeScript",
+  name: "TypeScript (Type checking)",
   installDevDependencies: (context) =>
     ["typescript", context.environment === "node" && "@types/node"].filter(
       isString,

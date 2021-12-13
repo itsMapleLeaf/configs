@@ -1,8 +1,8 @@
 import type { Feature } from "../feature.js"
 import { isJsonObject } from "../json.js"
 
-export const testWithAvaFeature: Feature = {
-  name: "Test with AVA",
+export const avaFeature: Feature = {
+  name: "AVA (Testing)",
   ignoredPaths: ["coverage"],
   installDevDependencies: () => ["ava", "c8", "esbuild-node-loader", "esbuild"],
   addScripts: () => [{ name: "test", command: "c8 ava" }],

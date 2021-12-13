@@ -1,7 +1,7 @@
 import type { Feature } from "../feature.js"
 
-export const runWithEsmoFeature: Feature = {
-  name: "Run with esmo",
+export const esmoFeature: Feature = {
+  name: "esmo (ES modules)",
   initiallyChecked: (context) =>
     context.environment === "node" && context.projectType === "application",
   addScripts: () => [

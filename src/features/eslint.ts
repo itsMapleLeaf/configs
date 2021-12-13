@@ -3,7 +3,7 @@ import type { Feature } from "../feature"
 import { isJsonObject } from "../json.js"
 
 export const eslintFeature: Feature = {
-  name: "ESLint",
+  name: "ESLint (Linting)",
   installDevDependencies: () => [
     "@typescript-eslint/eslint-plugin",
     "@typescript-eslint/parser",

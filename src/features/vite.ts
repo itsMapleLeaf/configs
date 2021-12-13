@@ -3,7 +3,7 @@ import type { ProjectContext } from "../project-context.js"
 import { isTailwindEnabled } from "./tailwind.js"
 
 export const viteFeature: Feature = {
-  name: "Vite",
+  name: "Vite (Build)",
   ignoredPaths: ["dist"],
   initiallyChecked: (context) =>
     context.environment === "browser" && context.projectType === "application",

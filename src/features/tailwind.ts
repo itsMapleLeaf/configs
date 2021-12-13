@@ -2,7 +2,7 @@ import type { Feature } from "../feature.js"
 import type { ProjectContext } from "../project-context.js"
 
 export const tailwindFeature: Feature = {
-  name: "Tailwind CSS",
+  name: "Tailwind CSS (Styling)",
   initiallyChecked: (context) =>
     context.environment === "browser" && context.projectType === "application",
   installDevDependencies: () => ["tailwindcss", "postcss"],

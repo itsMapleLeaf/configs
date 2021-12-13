@@ -10,24 +10,24 @@ import type { JsonObject } from "type-fest"
 import packageJson from "../package.json"
 import { packageRoot } from "./constants.js"
 import type { Feature } from "./feature.js"
-import { compileWithTsupFeature } from "./features/compile-with-tsup.js"
+import { avaFeature } from "./features/ava.js"
 import { eslintFeature } from "./features/eslint.js"
+import { esmoFeature } from "./features/esmo.js"
 import { prettierFeature } from "./features/prettier.js"
-import { runWithEsmoFeature } from "./features/run-with-esmo.js"
 import { tailwindFeature } from "./features/tailwind.js"
-import { testWithAvaFeature } from "./features/test-with-ava.js"
+import { tsupFeature } from "./features/tsup.js"
 import { typescriptFeature } from "./features/typescript.js"
 import { viteFeature } from "./features/vite.js"
 import { acceptString, isJsonObject } from "./json.js"
 import type { ProjectContext } from "./project-context.js"
 
 const allFeatures: Feature[] = [
-  compileWithTsupFeature,
+  tsupFeature,
   eslintFeature,
   prettierFeature,
-  runWithEsmoFeature,
+  esmoFeature,
   tailwindFeature,
-  testWithAvaFeature,
+  avaFeature,
   typescriptFeature,
   viteFeature,
 ]
