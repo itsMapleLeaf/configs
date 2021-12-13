@@ -86,14 +86,14 @@ const devDependencies = flow(
 
 if (dependencies.length > 0) {
   await oraPromise(
-    execa("pnpm", ["add", ...dependencies]),
+    execa("pnpm", ["install", ...dependencies]),
     `Installing dependencies: ${chalk.bold.cyan(dependencies.join(" "))}`,
   )
 }
 
 if (devDependencies.length > 0) {
   await oraPromise(
-    execa("pnpm", ["add", "--save-dev", ...devDependencies]),
+    execa("pnpm", ["install", "--save-dev", ...devDependencies]),
     `Installing dev dependencies: ${chalk.bold.cyan(
       devDependencies.join(" "),
     )}`,
