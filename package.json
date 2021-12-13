@@ -15,7 +15,7 @@
     "lint": "eslint --ext js,ts,tsx .",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "compile": "tsup-node src/main.ts --target=node16 --format=esm",
+    "build": "tsup-node src/main.ts --target=node16 --format=esm",
     "test": "esmo test/run-test.ts",
     "release": "pnpm compile && release-it",
     "lint-fix": "pnpm lint -- --fix"
