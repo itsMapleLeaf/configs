@@ -1,8 +1,12 @@
+import { isString } from "lodash-es"
 import type { Feature } from "../feature.js"
 
 export const typescriptFeature: Feature = {
   name: "TypeScript",
-  installDevDependencies: () => ["typescript"],
+  installDevDependencies: (context) =>
+    ["typescript", context.environment === "node" && "@types/node"].filter(
+      isString,
+    ),
   writeFiles: (context) => [
     {
       path: "tsconfig.json",
