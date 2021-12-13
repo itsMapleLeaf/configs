@@ -3,7 +3,7 @@
   "type": "module",
   "description": "my cool and awesome configurator of various things",
   "authors": "MapleLeaf",
-  "version": "1.1.0-0",
+  "version": "1.1.0",
   "files": [
     "dist",
     "assets",
