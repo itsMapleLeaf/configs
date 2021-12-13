@@ -71,35 +71,6 @@ for (const feature of allFeatures) {
   context.ignoredPaths.push(...(feature.ignoredPaths ?? []))
 }
 
-const dependencies = uniq(
-  features.flatMap((feature) => feature.installDependencies?.(context) ?? []),
-)
-
-const devDependencies = flow(
-  (features: Feature[]) =>
-    features.flatMap(
-      (feature) => feature.installDevDependencies?.(context) ?? [],
-    ),
-  (features) => uniq(features),
-  (features) => difference(features, dependencies),
-)(features)
-
-if (dependencies.length > 0) {
-  await oraPromise(
-    execa("pnpm", ["install", ...dependencies]),
-    `Installing dependencies: ${chalk.bold.cyan(dependencies.join(" "))}`,
-  )
-}
-
-if (devDependencies.length > 0) {
-  await oraPromise(
-    execa("pnpm", ["install", "--save-dev", ...devDependencies]),
-    `Installing dev dependencies: ${chalk.bold.cyan(
-      devDependencies.join(" "),
-    )}`,
-  )
-}
-
 const copyFiles = features.flatMap(
   (feature) => feature.copyFiles?.(context) ?? [],
 )
@@ -147,3 +118,32 @@ await writeFile(
   join(process.cwd(), "package.json"),
   JSON.stringify(projectPackageJson, undefined, 2),
 )
+
+const dependencies = uniq(
+  features.flatMap((feature) => feature.installDependencies?.(context) ?? []),
+)
+
+const devDependencies = flow(
+  (features: Feature[]) =>
+    features.flatMap(
+      (feature) => feature.installDevDependencies?.(context) ?? [],
+    ),
+  (features) => uniq(features),
+  (features) => difference(features, dependencies),
+)(features)
+
+if (dependencies.length > 0) {
+  await oraPromise(
+    execa("pnpm", ["install", ...dependencies]),
+    `Installing dependencies: ${chalk.bold.cyan(dependencies.join(" "))}`,
+  )
+}
+
+if (devDependencies.length > 0) {
+  await oraPromise(
+    execa("pnpm", ["install", "--save-dev", ...devDependencies]),
+    `Installing dev dependencies: ${chalk.bold.cyan(
+      devDependencies.join(" "),
+    )}`,
+  )
+}
