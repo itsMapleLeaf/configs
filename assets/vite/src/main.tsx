@@ -1,2 +1,2 @@
-console.log("hi")
+console.info("hi")
 export {}

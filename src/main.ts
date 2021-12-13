@@ -3,7 +3,7 @@ import cpy from "cpy"
 import { execa } from "execa"
 import { difference, flow, uniq } from "lodash-es"
 import { readFile, writeFile } from "node:fs/promises"
-import { join } from "node:path"
+import { basename, join } from "node:path"
 import { oraPromise } from "ora"
 import { promptCheckboxList, promptList } from "prompt-fns"
 import type { JsonObject } from "type-fest"
@@ -18,7 +18,7 @@ import { tailwindFeature } from "./features/tailwind.js"
 import { testWithAvaFeature } from "./features/test-with-ava.js"
 import { typescriptFeature } from "./features/typescript.js"
 import { viteFeature } from "./features/vite.js"
-import { isJsonObject } from "./json.js"
+import { acceptString, isJsonObject } from "./json.js"
 import type { ProjectContext } from "./project-context.js"
 
 const allFeatures: Feature[] = [
@@ -37,6 +37,10 @@ console.info(
   chalk.bold.cyan(process.cwd()),
 )
 
+const projectPackageJson: JsonObject = JSON.parse(
+  await readFile(join(process.cwd(), "package.json"), "utf8"),
+)
+
 const context: ProjectContext = {
   projectType: await promptList({
     message: "What type of project is this?",
@@ -48,9 +52,11 @@ const context: ProjectContext = {
   }),
   ignoredPaths: ["node_modules", ".vscode"],
   selfPackageName: packageJson.name,
+  projectName: acceptString(projectPackageJson.name) ?? basename(process.cwd()),
+  enabledFeatures: [],
 }
 
-const features = await promptCheckboxList({
+const features = (context.enabledFeatures = await promptCheckboxList({
   message: "Choose your features:",
   choices: allFeatures.map((feature) => ({
     name: feature.name,
@@ -59,7 +65,7 @@ const features = await promptCheckboxList({
   fallback: allFeatures.filter(
     (feature) => feature.initiallyChecked?.(context) ?? true,
   ),
-})
+}))
 
 for (const feature of allFeatures) {
   context.ignoredPaths.push(...(feature.ignoredPaths ?? []))
@@ -115,10 +121,6 @@ for (const { path, content } of writeFiles) {
     `Writing ${chalk.bold.cyan(path)}`,
   )
 }
-
-const projectPackageJson: JsonObject = JSON.parse(
-  await readFile(join(process.cwd(), "package.json"), "utf8"),
-)
 
 const addScripts = features.flatMap(
   (feature) => feature.addScripts?.(context) ?? [],

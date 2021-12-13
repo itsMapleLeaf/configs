@@ -64,9 +64,9 @@
     "ignorePatterns": [
       "**/node_modules/**",
       "**/dist/**",
-      "**/assets/**",
       "**/test/test-project/**"
-    ]
+    ],
+    "root": true
   },
   "publishConfig": {
     "access": "public"

@@ -8,3 +8,7 @@ export function isJsonObject(
 ): value is JsonObject {
   return typeof value === "object" && value !== null && !Array.isArray(value)
 }
+
+export function acceptString(value: unknown): string | undefined {
+  return typeof value === "string" ? value : undefined
+}

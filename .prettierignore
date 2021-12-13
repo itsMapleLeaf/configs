@@ -1,0 +1,4 @@
+node_modules
+dist
+test/test-project
+pnpm-lock.yaml

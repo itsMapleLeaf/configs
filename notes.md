@@ -1,3 +1,3 @@
-- [ ] every feature should have an id
-- [ ] prefix with that id during logging
-- [ ] might be helpful for features to know which other feature IDs are enabled
+- [ ] every feature should have an id (when i need it)
+- [ ] prefix with that id during logging (if possible?)
+- [x] might be helpful for features to know which other feature IDs are enabled
