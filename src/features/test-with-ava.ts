@@ -14,8 +14,7 @@ export const testWithAvaFeature: Feature = {
           packageJson.ava = {}
         }
 
-        packageJson.ava.files =
-          "{src,test,tests,integration}/**/*.test.{ts,tsx}"
+        packageJson.ava.files = "{src,test,integration}/**/*.test.{ts,tsx}"
 
         packageJson.ava.nodeArguments = [
           "--loader=esbuild-node-loader",
