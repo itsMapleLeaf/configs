@@ -49,6 +49,7 @@ module.exports = {
       { replacements: { props: false, args: false, ref: false } },
     ],
     "unicorn/no-array-callback-reference": "off",
+    "unicorn/no-useless-undefined": "off",
   },
   ignorePatterns: [
     "**/node_modules/**",
