@@ -14,7 +14,7 @@ await writeFile(
   JSON.stringify({ name: "test-project", version: "0.0.0" }),
 )
 
-await execa("pnpm", ["compile"], {
+await execa("pnpm", ["build"], {
   stdio: "inherit",
 })
 
