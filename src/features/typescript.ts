@@ -1,4 +1,4 @@
-import { isString } from "lodash-es"
+import { isString, uniq } from "lodash-es"
 import type { Feature } from "../feature.js"
 
 export const typescriptFeature: Feature = {
@@ -13,7 +13,10 @@ export const typescriptFeature: Feature = {
       content: JSON.stringify(
         {
           extends: `${context.selfPackageName}/tsconfig.base`,
-          exclude: context.ignoredPaths,
+          exclude: uniq([
+            ...context.ignoredPaths,
+            ...context.typecheckIgnoredPaths,
+          ]),
         },
         undefined,
         2,

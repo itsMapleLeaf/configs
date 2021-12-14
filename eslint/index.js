@@ -51,15 +51,6 @@ module.exports = {
     "unicorn/no-array-callback-reference": "off",
     "unicorn/no-useless-undefined": "off",
   },
-  ignorePatterns: [
-    "**/node_modules/**",
-    "**/dist/**",
-    "**/build/**",
-    "**/release/**",
-    "**/docs/**",
-    "**/.cache/**",
-    "**/generated/**",
-  ],
   settings: {
     "react": { version: "latest" },
     "import/parsers": { "@typescript-eslint/parser": [".ts", ".tsx"] },

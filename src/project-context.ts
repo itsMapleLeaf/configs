@@ -4,7 +4,11 @@ export type ProjectContext = {
   environment: "browser" | "node"
   projectType: "application" | "library"
   projectName: string
-  ignoredPaths: string[]
+  ignoredPaths: Set<string>
+  gitIgnoredPaths: Set<string>
+  lintIgnoredPaths: Set<string>
+  typecheckIgnoredPaths: Set<string>
+  formatIgnoredPaths: Set<string>
   selfPackageName: string
   enabledFeatures: Feature[]
 }

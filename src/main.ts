@@ -2,7 +2,7 @@ import chalk from "chalk"
 import cpy from "cpy"
 import { execa } from "execa"
 import { difference, flow, uniq } from "lodash-es"
-import { readFile, writeFile } from "node:fs/promises"
+import { readFile } from "node:fs/promises"
 import { basename, join } from "node:path"
 import { oraPromise } from "ora"
 import { promptCheckboxList, promptList } from "prompt-fns"
@@ -18,6 +18,9 @@ import { tailwindFeature } from "./features/tailwind.js"
 import { tsupFeature } from "./features/tsup.js"
 import { typescriptFeature } from "./features/typescript.js"
 import { viteFeature } from "./features/vite.js"
+import { addAllToSet } from "./helpers/add-all-to-set.js"
+import { readFileOrUndefined } from "./helpers/read-file-or-undefined.js"
+import { writeFileWithNewLine } from "./helpers/write-file-with-new-line.js"
 import { acceptString, isJsonObject } from "./json.js"
 import type { ProjectContext } from "./project-context.js"
 
@@ -50,7 +53,11 @@ const context: ProjectContext = {
     message: "Where is the code running?",
     choices: ["node", "browser"],
   }),
-  ignoredPaths: ["node_modules", ".vscode"],
+  ignoredPaths: new Set(["node_modules"]),
+  gitIgnoredPaths: new Set([".vscode"]),
+  lintIgnoredPaths: new Set([".vscode"]),
+  typecheckIgnoredPaths: new Set([]),
+  formatIgnoredPaths: new Set(["pnpm-lock.yaml"]),
   selfPackageName: packageJson.name,
   projectName: acceptString(projectPackageJson.name) ?? basename(process.cwd()),
   enabledFeatures: [],
@@ -67,9 +74,23 @@ const features = (context.enabledFeatures = await promptCheckboxList({
   ),
 }))
 
-for (const feature of allFeatures) {
-  context.ignoredPaths.push(...(feature.ignoredPaths ?? []))
+for (const feature of features) {
+  addAllToSet(context.ignoredPaths, feature.ignoredPaths)
+  addAllToSet(context.gitIgnoredPaths, feature.gitIgnoredPaths)
+  addAllToSet(context.lintIgnoredPaths, feature.lintIgnoredPaths)
+  addAllToSet(context.typecheckIgnoredPaths, feature.typecheckIgnoredPaths)
+  addAllToSet(context.formatIgnoredPaths, feature.formatIgnoredPaths)
 }
+
+const currentGitIgnore = await readFileOrUndefined(".gitignore")
+await writeFileWithNewLine(
+  ".gitignore",
+  uniq([
+    ...(currentGitIgnore?.split(/\r?\n/) ?? []),
+    ...context.ignoredPaths,
+    ...context.gitIgnoredPaths,
+  ]),
+)
 
 const copyFiles = features.flatMap(
   (feature) => feature.copyFiles?.(context) ?? [],
@@ -88,7 +109,7 @@ const writeFiles = features.flatMap(
 
 for (const { path, content } of writeFiles) {
   await oraPromise(
-    writeFile(join(process.cwd(), path), content),
+    writeFileWithNewLine(join(process.cwd(), path), content),
     `Writing ${chalk.bold.cyan(path)}`,
   )
 }
@@ -114,7 +135,7 @@ for (const { updatePackageJson } of features) {
   }
 }
 
-await writeFile(
+await writeFileWithNewLine(
   join(process.cwd(), "package.json"),
   JSON.stringify(projectPackageJson, undefined, 2),
 )

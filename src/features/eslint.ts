@@ -1,3 +1,4 @@
+import { uniq } from "lodash-es"
 import { posix } from "node:path"
 import type { Feature } from "../feature"
 import { isJsonObject } from "../json.js"
@@ -40,6 +41,22 @@ export const eslintFeature: Feature = {
         if (!currentExtends.includes(thisConfig)) {
           packageJson.eslintConfig.extends = [...currentExtends, thisConfig]
         }
+
+        const ignorePatterns = Array.isArray(
+          packageJson.eslintConfig.ignorePatterns,
+        )
+          ? packageJson.eslintConfig.ignorePatterns
+          : []
+
+        const newIgnorePatterns = [
+          ...context.ignoredPaths,
+          ...context.lintIgnoredPaths,
+        ].map((path) => `**/${path}/**`)
+
+        packageJson.eslintConfig.ignorePatterns = uniq([
+          ...ignorePatterns,
+          ...newIgnorePatterns,
+        ])
       },
     },
   ],

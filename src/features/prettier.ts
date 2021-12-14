@@ -4,7 +4,10 @@ export const prettierFeature: Feature = {
   name: "Prettier (Formatting)",
   installDevDependencies: (context) => ["prettier"],
   writeFiles: (context) => [
-    { path: ".prettierignore", content: context.ignoredPaths.join("\n") },
+    {
+      path: ".prettierignore",
+      content: [...context.ignoredPaths, ...context.formatIgnoredPaths],
+    },
   ],
   addScripts: () => [{ name: "format", command: "prettier --write ." }],
   updatePackageJson: (context) => [
