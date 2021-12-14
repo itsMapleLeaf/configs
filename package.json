@@ -16,7 +16,8 @@
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "build": "tsup-node src/main.ts --target=node16 --format=esm",
-    "test": "esmo test/run-test.ts",
+    "test-manual": "esmo test/run-test.ts",
+    "test-lint": "eslint --ext js,ts,tsx test/lint",
     "release": "pnpm build && release-it",
     "lint-fix": "pnpm lint -- --fix"
   },
