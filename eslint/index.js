@@ -50,6 +50,7 @@ module.exports = {
     ],
     "unicorn/no-array-callback-reference": "off",
     "unicorn/no-useless-undefined": "off",
+    "unicorn/consistent-function-scoping": "off",
   },
   settings: {
     "react": { version: "latest" },
