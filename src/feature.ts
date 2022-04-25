@@ -1,4 +1,12 @@
+import { promptCheckboxList } from "prompt-fns"
 import type { JsonObject } from "type-fest"
+import { avaFeature } from "./features/ava.js"
+import { eslintFeature } from "./features/eslint.js"
+import { esmoFeature } from "./features/esmo.js"
+import { prettierFeature } from "./features/prettier.js"
+import { tailwindFeature } from "./features/tailwind.js"
+import { tsupFeature } from "./features/tsup.js"
+import { typescriptFeature } from "./features/typescript.js"
 import type { ProjectContext } from "./project-context"
 
 export type Feature = {
@@ -24,4 +32,29 @@ export type Feature = {
     description: string
     update: (packageJson: JsonObject) => void
   }>
+}
+
+export const allFeatures: Feature[] = [
+  tsupFeature,
+  eslintFeature,
+  prettierFeature,
+  esmoFeature,
+  tailwindFeature,
+  avaFeature,
+  typescriptFeature,
+]
+
+export function promptFeatures(
+  context: ProjectContext,
+): Feature[] | PromiseLike<Feature[]> {
+  return promptCheckboxList({
+    message: "Choose your features:",
+    choices: allFeatures.map((feature) => ({
+      name: feature.name,
+      value: feature,
+    })),
+    fallback: allFeatures.filter(
+      (feature) => feature.initiallyChecked?.(context) ?? true,
+    ),
+  })
 }
