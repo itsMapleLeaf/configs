@@ -53,7 +53,7 @@ const context: ProjectContext = {
   }),
   ignoredPaths: new Set(["node_modules"]),
   gitIgnoredPaths: new Set([".vscode"]),
-  lintIgnoredPaths: new Set([".vscode"]),
+  lintIgnoredPaths: new Set([]),
   typecheckIgnoredPaths: new Set([]),
   formatIgnoredPaths: new Set(["pnpm-lock.yaml"]),
   selfPackageName: packageJson.name,
