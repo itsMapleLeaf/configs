@@ -13,7 +13,7 @@ import { addAllToSet } from "./helpers/add-all-to-set.js"
 import { readFileOrUndefined } from "./helpers/read-file-or-undefined.js"
 import { writeFileWithNewLine } from "./helpers/write-file-with-new-line.js"
 import { acceptString, isJsonObject } from "./json.js"
-import type { ProjectEnvironment} from "./project-environment.js";
+import type { ProjectEnvironment } from "./project-environment.js"
 import { promptEnvironment } from "./project-environment.js"
 
 export type ProjectContext = {
@@ -38,7 +38,7 @@ export async function getInitialProjectContext(): Promise<ProjectContext> {
     environment: await promptEnvironment(),
     ignoredPaths: new Set(["node_modules", "build", "dist", ".cache"]),
     gitIgnoredPaths: new Set([".vscode"]),
-    lintIgnoredPaths: new Set([]),
+    lintIgnoredPaths: new Set(["public"]),
     typecheckIgnoredPaths: new Set([]),
     formatIgnoredPaths: new Set(["pnpm-lock.yaml"]),
     selfPackageName: packageJson.name,
