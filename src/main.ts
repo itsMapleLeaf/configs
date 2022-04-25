@@ -17,7 +17,6 @@ import { prettierFeature } from "./features/prettier.js"
 import { tailwindFeature } from "./features/tailwind.js"
 import { tsupFeature } from "./features/tsup.js"
 import { typescriptFeature } from "./features/typescript.js"
-import { viteFeature } from "./features/vite.js"
 import { addAllToSet } from "./helpers/add-all-to-set.js"
 import { readFileOrUndefined } from "./helpers/read-file-or-undefined.js"
 import { writeFileWithNewLine } from "./helpers/write-file-with-new-line.js"
@@ -32,7 +31,6 @@ const allFeatures: Feature[] = [
   tailwindFeature,
   avaFeature,
   typescriptFeature,
-  viteFeature,
 ]
 
 console.info(
