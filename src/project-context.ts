@@ -5,7 +5,7 @@ import { difference, flow, uniq } from "lodash-es"
 import { readFile } from "node:fs/promises"
 import { basename, join } from "node:path"
 import { oraPromise } from "ora"
-import { JsonObject } from "type-fest"
+import type { JsonObject } from "type-fest"
 import packageJson from "../package.json"
 import { packageRoot } from "./constants.js"
 import type { Feature } from "./feature.js"
@@ -13,7 +13,8 @@ import { addAllToSet } from "./helpers/add-all-to-set.js"
 import { readFileOrUndefined } from "./helpers/read-file-or-undefined.js"
 import { writeFileWithNewLine } from "./helpers/write-file-with-new-line.js"
 import { acceptString, isJsonObject } from "./json.js"
-import { ProjectEnvironment, promptEnvironment } from "./project-environment.js"
+import type { ProjectEnvironment} from "./project-environment.js";
+import { promptEnvironment } from "./project-environment.js"
 
 export type ProjectContext = {
   environment: ProjectEnvironment

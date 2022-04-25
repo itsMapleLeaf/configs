@@ -13,10 +13,13 @@
   - e.g. the vite feature depends on tailwind, should generate the vite index.html in a separate feature (?)
 - [ ] always-on features, relevant to ^
 - [x] eslint feature should write a .eslintrc.cjs file with a require.resolve() call
-- [ ] update eslint config
+- [x] update eslint config
 - [ ] allow features to run commands on completion
 - [ ] prettier feature should format on completion
 - [ ] tsup/esmo feature should create an src/main.ts file
+- typescript feature:
+  - [ ] add \*\* to ignores
+  - [ ] include .cjs files (and everything else)
 - [ ] allow features to ask their own questions for things
 
 ## feature ideas

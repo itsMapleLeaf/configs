@@ -1,5 +1,5 @@
 import { promptList } from "prompt-fns"
-import { SetRequired } from "type-fest"
+import type { SetRequired } from "type-fest"
 
 export type ProjectEnvironment = {
   name: string
