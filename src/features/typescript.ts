@@ -16,7 +16,7 @@ export const typescriptFeature: Feature = {
           exclude: uniq([
             ...context.ignoredPaths,
             ...context.typecheckIgnoredPaths,
-          ]),
+          ]).map((path) => `**/${path}/**`),
         },
         undefined,
         2,

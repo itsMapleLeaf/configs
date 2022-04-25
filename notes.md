@@ -18,7 +18,7 @@
 - [ ] prettier feature should format on completion
 - [ ] tsup/esmo feature should create an src/main.ts file
 - typescript feature:
-  - [ ] add \*\* to ignores
+  - [x] add \*\* to ignores
   - [ ] ~~include .cjs files (and everything else)~~ this is broken
 - [ ] allow features to ask their own questions for things
 
