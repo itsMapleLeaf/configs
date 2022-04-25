@@ -1,17 +1,13 @@
 import type { Feature } from "../feature"
+import { formatWithPrettier } from "../format.js"
 
 export const eslintFeature: Feature = {
   name: "ESLint (Linting)",
   installDevDependencies: () => [
-    "@typescript-eslint/eslint-plugin",
-    "@typescript-eslint/parser",
-    "eslint-config-prettier",
-    "eslint-plugin-jsx-a11y",
-    "eslint-plugin-react-hooks",
-    "eslint-plugin-react",
-    "eslint-plugin-unicorn",
     "eslint",
+    "@types/eslint",
     "prettier",
+    "@rushstack/eslint-patch",
   ],
   addScripts: () => [
     { name: "lint", command: "eslint --ext js,ts,tsx ." },
@@ -26,12 +22,21 @@ export const eslintFeature: Feature = {
     const moduleString = `${context.selfPackageName}/eslint`
 
     const eslintFile = [
+      `/** @type {import('eslint').Linter.Config} */`,
       `module.exports = {`,
       `  extends: [require.resolve(${JSON.stringify(moduleString)})],`,
       `  ignorePatterns: ${JSON.stringify(ignorePatterns)},`,
+      `  parserOptions: {`,
+      `    project: require.resolve("./tsconfig.json"),`,
+      `  },`,
       `}`,
     ]
 
-    return [{ path: ".eslintrc.cjs", content: eslintFile }]
+    return [
+      {
+        path: ".eslintrc.cjs",
+        content: formatWithPrettier(eslintFile.join("\n")),
+      },
+    ]
   },
 }

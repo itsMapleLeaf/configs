@@ -1,5 +1,5 @@
-/** @type {import('eslint').Linter.Config} */
 // eslint-disable-next-line unicorn/prefer-module
+/** @type {import('eslint').Linter.Config} */
 module.exports = {
   root: true,
   env: {
@@ -15,14 +15,13 @@ module.exports = {
     "plugin:unicorn/recommended",
     "prettier",
   ],
-  parser: "@typescript-eslint/parser",
+  parser: require.resolve("@typescript-eslint/parser"),
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 2021,
     sourceType: "module",
-    project: "./tsconfig.json",
     extraFileExtensions: [".cjs", ".mjs"],
   },
   plugins: ["react", "@typescript-eslint"],
