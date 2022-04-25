@@ -12,7 +12,7 @@
 - [ ] for features dependent on other features, should write that as a separate feature to avoid circular dependencies
   - e.g. the vite feature depends on tailwind, should generate the vite index.html in a separate feature (?)
 - [ ] always-on features, relevant to ^
-- [x] eslint feature should write a .eslintrc.js file with a require.resolve() call
+- [x] eslint feature should write a .eslintrc.cjs file with a require.resolve() call
 - [ ] update eslint config
 - [ ] allow features to run commands on completion
 - [ ] prettier feature should format on completion

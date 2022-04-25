@@ -34,6 +34,6 @@ export const eslintFeature: Feature = {
       `}`,
     ]
 
-    return [{ path: ".eslintrc.js", content: eslintFile }]
+    return [{ path: ".eslintrc.cjs", content: eslintFile }]
   },
 }
