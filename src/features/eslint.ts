@@ -37,7 +37,7 @@ export const eslintFeature: Feature = {
     return [
       {
         path: ".eslintrc.cjs",
-        content: formatWithPrettier(eslintFile.join("\n")),
+        content: formatWithPrettier(eslintFile.join("\n"), ".eslintrc.cjs"),
       },
     ]
   },
