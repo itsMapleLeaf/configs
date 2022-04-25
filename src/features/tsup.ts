@@ -4,17 +4,17 @@ export const tsupFeature: Feature = {
   name: "tsup (Build)",
   ignoredPaths: ["dist"],
   initiallyChecked: (context) =>
-    context.environment === "node" && context.projectType === "library",
+    context.environment.isNode && context.environment.isLibrary,
   installDevDependencies: () => ["tsup", "esbuild"],
   addScripts: (context) => {
     const command = [
-      context.environment === "node" ? "tsup-node" : "tsup",
+      context.environment.isNode ? "tsup-node" : "tsup",
       "src/main.ts",
       "--clean",
       "--target node16",
-      `--format`,
-      context.projectType === "library" ? "cjs,esm" : "esm",
-      context.projectType === "library" ? "--dts" : "",
+      "--format esm",
+      `--sourcemap`,
+      context.environment.isLibrary ? "--dts" : "",
     ].join(" ")
 
     return [{ name: "build", command }]

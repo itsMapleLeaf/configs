@@ -3,7 +3,7 @@ import type { Feature } from "../feature.js"
 export const esmoFeature: Feature = {
   name: "esmo (ES modules)",
   initiallyChecked: (context) =>
-    context.environment === "node" && context.projectType === "application",
+    context.environment.isNode && context.environment.isApplication,
   addScripts: () => [
     { name: "start", command: "esmo --no-warnings src/main.ts" },
     {

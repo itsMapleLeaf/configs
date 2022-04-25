@@ -6,7 +6,7 @@
 - [ ] maybe categorize ignored paths, so they can go to the appropriate files
   - e.g. it doesn't make sense to add .vscode to tsconfig excludes, but we want that in .gitignore
   - might be best to just hardcode specific ignores?
-- [ ] application types should be more atomic:
+- [x] application types should be more atomic:
   - app-browser
   - app-node
   - library-browser

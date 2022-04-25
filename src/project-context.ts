@@ -5,7 +5,6 @@ import { difference, flow, uniq } from "lodash-es"
 import { readFile } from "node:fs/promises"
 import { basename, join } from "node:path"
 import { oraPromise } from "ora"
-import { promptList } from "prompt-fns"
 import { JsonObject } from "type-fest"
 import packageJson from "../package.json"
 import { packageRoot } from "./constants.js"
@@ -14,10 +13,10 @@ import { addAllToSet } from "./helpers/add-all-to-set.js"
 import { readFileOrUndefined } from "./helpers/read-file-or-undefined.js"
 import { writeFileWithNewLine } from "./helpers/write-file-with-new-line.js"
 import { acceptString, isJsonObject } from "./json.js"
+import { ProjectEnvironment, promptEnvironment } from "./project-environment.js"
 
 export type ProjectContext = {
-  environment: "browser" | "node"
-  projectType: "application" | "library"
+  environment: ProjectEnvironment
   projectName: string
   packageJson: JsonObject
   ignoredPaths: Set<string>
@@ -35,14 +34,7 @@ export async function getInitialProjectContext(): Promise<ProjectContext> {
   )
 
   return {
-    projectType: await promptList({
-      message: "What type of project is this?",
-      choices: ["application", "library"],
-    }),
-    environment: await promptList({
-      message: "Where is the code running?",
-      choices: ["node", "browser"],
-    }),
+    environment: await promptEnvironment(),
     ignoredPaths: new Set(["node_modules"]),
     gitIgnoredPaths: new Set([".vscode"]),
     lintIgnoredPaths: new Set([]),
