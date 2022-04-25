@@ -35,7 +35,7 @@ export async function getInitialProjectContext(): Promise<ProjectContext> {
 
   return {
     environment: await promptEnvironment(),
-    ignoredPaths: new Set(["node_modules"]),
+    ignoredPaths: new Set(["node_modules", "build", "dist", ".cache"]),
     gitIgnoredPaths: new Set([".vscode"]),
     lintIgnoredPaths: new Set([]),
     typecheckIgnoredPaths: new Set([]),
