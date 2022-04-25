@@ -1,12 +1,12 @@
 import { promptCheckboxList } from "prompt-fns"
 import type { JsonObject } from "type-fest"
-import { avaFeature } from "./features/ava.js"
 import { eslintFeature } from "./features/eslint.js"
 import { esmoFeature } from "./features/esmo.js"
 import { prettierFeature } from "./features/prettier.js"
 import { tailwindFeature } from "./features/tailwind.js"
 import { tsupFeature } from "./features/tsup.js"
 import { typescriptFeature } from "./features/typescript.js"
+import { vitestFeature } from "./features/vitest.js"
 import type { ProjectContext } from "./project-context"
 
 export type Feature = {
@@ -40,7 +40,7 @@ export const allFeatures: Feature[] = [
   prettierFeature,
   esmoFeature,
   tailwindFeature,
-  avaFeature,
+  vitestFeature,
   typescriptFeature,
 ]
 
