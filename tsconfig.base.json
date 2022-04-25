@@ -17,19 +17,6 @@
     "resolveJsonModule": true,
     "noEmit": true
   },
-  // typescript doesn't include cjs by default,
-  // but we have to add all the others too
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.d.ts",
-    "**/*.js",
-    "**/*.*.js",
-    "**/*.cjs",
-    "**/*.*.cjs",
-    "**/*.mjs",
-    "**/*.*.mjs"
-  ],
   "exclude": [
     "**/node_modules/**",
     "**/dist/**",

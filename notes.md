@@ -19,7 +19,7 @@
 - [ ] tsup/esmo feature should create an src/main.ts file
 - typescript feature:
   - [ ] add \*\* to ignores
-  - [ ] include .cjs files (and everything else)
+  - [ ] ~~include .cjs files (and everything else)~~ this is broken
 - [ ] allow features to ask their own questions for things
 
 ## feature ideas
