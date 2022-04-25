@@ -1,7 +1,4 @@
-import { uniq } from "lodash-es"
-import { posix } from "node:path"
 import type { Feature } from "../feature"
-import { isJsonObject } from "../json.js"
 
 export const eslintFeature: Feature = {
   name: "ESLint (Linting)",
@@ -22,42 +19,21 @@ export const eslintFeature: Feature = {
     { name: "lint", command: "eslint --ext js,ts,tsx ." },
     { name: "lint-fix", command: "pnpm lint -- --fix" },
   ],
-  updatePackageJson: (context) => [
-    {
-      description: "Added ESLint config",
-      update: (packageJson) => {
-        if (!isJsonObject(packageJson.eslintConfig)) {
-          packageJson.eslintConfig = {}
-        }
+  writeFiles: (context) => {
+    const ignorePatterns = [
+      ...context.ignoredPaths,
+      ...context.lintIgnoredPaths,
+    ].map((path) => `**/${path}/**`)
 
-        const currentExtends = Array.isArray(packageJson.eslintConfig.extends)
-          ? packageJson.eslintConfig.extends
-          : []
+    const moduleString = `${context.selfPackageName}/eslint`
 
-        // eslint needs an explicit path, and posix.join removes the ./
-        const thisConfig =
-          "./" + posix.join("node_modules", context.selfPackageName, "eslint")
+    const eslintFile = [
+      `module.exports = {`,
+      `  extends: [require.resolve(${JSON.stringify(moduleString)})],`,
+      `  ignorePatterns: ${JSON.stringify(ignorePatterns)},`,
+      `}`,
+    ]
 
-        if (!currentExtends.includes(thisConfig)) {
-          packageJson.eslintConfig.extends = [...currentExtends, thisConfig]
-        }
-
-        const ignorePatterns = Array.isArray(
-          packageJson.eslintConfig.ignorePatterns,
-        )
-          ? packageJson.eslintConfig.ignorePatterns
-          : []
-
-        const newIgnorePatterns = [
-          ...context.ignoredPaths,
-          ...context.lintIgnoredPaths,
-        ].map((path) => `**/${path}/**`)
-
-        packageJson.eslintConfig.ignorePatterns = uniq([
-          ...ignorePatterns,
-          ...newIgnorePatterns,
-        ])
-      },
-    },
-  ],
+    return [{ path: ".eslintrc.js", content: eslintFile }]
+  },
 }
