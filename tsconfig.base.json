@@ -15,7 +15,8 @@
     "noUncheckedIndexedAccess": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "noEmit": true
+    "noEmit": true,
+    "useDefineForClassFields": true
   },
   "exclude": [
     "**/node_modules/**",
