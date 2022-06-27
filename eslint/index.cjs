@@ -50,6 +50,6 @@ module.exports = {
     "unicorn/prevent-abbreviations": "off",
   },
   settings: {
-    react: { version: "detect" },
+    react: { version: "latest" },
   },
 }
