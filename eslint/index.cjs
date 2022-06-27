@@ -50,6 +50,6 @@ module.exports = {
     "unicorn/prevent-abbreviations": "off",
   },
   settings: {
-    react: { version: "latest" },
+    react: { version: "v18.2.0" },
   },
 }
