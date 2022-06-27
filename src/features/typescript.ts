@@ -13,6 +13,14 @@ export const typescriptFeature: Feature = {
       content: JSON.stringify(
         {
           extends: `${context.selfPackageName}/tsconfig.base`,
+          include: [
+            "**/*.ts",
+            "**/*.tsx",
+            "**/*.js",
+            "**/*.cjs",
+            "**/*.mjs",
+            ".eslintrc.cjs",
+          ],
           exclude: uniq([
             ...context.ignoredPaths,
             ...context.typecheckIgnoredPaths,
