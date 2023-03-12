@@ -22,13 +22,15 @@ module.exports = {
     },
     ecmaVersion: 2021,
     sourceType: "module",
-    extraFileExtensions: [".cjs", ".mjs"],
   },
   plugins: ["react", "@typescript-eslint"],
   rules: {
     "@typescript-eslint/array-type": ["warn", { default: "array-simple" }],
     "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
-    "@typescript-eslint/consistent-type-imports": "warn",
+    "@typescript-eslint/consistent-type-imports": [
+      "warn",
+      { fixStyle: "inline-type-imports" },
+    ],
     "@typescript-eslint/no-floating-promises": "warn",
     "@typescript-eslint/no-redeclare": "warn",
     // having this enabled still separates imports,
