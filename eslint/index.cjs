@@ -33,9 +33,6 @@ module.exports = {
     ],
     "@typescript-eslint/no-floating-promises": "warn",
     "@typescript-eslint/no-redeclare": "warn",
-    // having this enabled still separates imports,
-    // so keeping it disabled for now
-    // "canonical/prefer-inline-type-import": "warn",
     "class-methods-use-this": "warn",
     "jsx-a11y/no-onchange": "off",
     "no-console": ["warn", { allow: ["warn", "error", "info"] }],
