@@ -2,7 +2,7 @@ import type { Feature } from "../feature"
 
 export const prettierFeature: Feature = {
   name: "Prettier (Formatting)",
-  installDevDependencies: (context) => ["prettier"],
+  installDevDependencies: () => ["prettier"],
   writeFiles: (context) => [
     {
       path: ".prettierignore",

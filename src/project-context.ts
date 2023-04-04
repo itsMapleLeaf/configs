@@ -30,9 +30,9 @@ export type ProjectContext = {
 }
 
 export async function getInitialProjectContext(): Promise<ProjectContext> {
-  const projectPackageJson: JsonObject = JSON.parse(
+  const projectPackageJson = JSON.parse(
     await readFile(join(process.cwd(), "package.json"), "utf8"),
-  )
+  ) as JsonObject
 
   return {
     environment: await promptEnvironment(),

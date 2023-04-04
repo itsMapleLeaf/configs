@@ -1,4 +1,3 @@
-// @ts-expect-error
 require("@rushstack/eslint-patch/modern-module-resolution")
 
 /** @type {import('eslint').Linter.Config} */
@@ -10,7 +9,4 @@ module.exports = {
     "**/dist/**",
     "**/test/test-project/**",
   ],
-  parserOptions: {
-    project: require.resolve("./tsconfig.json"),
-  },
 }

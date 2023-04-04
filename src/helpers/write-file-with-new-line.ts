@@ -8,8 +8,7 @@ export function writeFileWithNewLine(
   filePath: string,
   content: string | Iterable<string>,
 ) {
-  if (typeof content !== "string") {
-    content = [...content].join("\n")
-  }
-  return writeFile(filePath, content + "\n")
+  const contentString =
+    typeof content === "string" ? content : [...content].join("\n")
+  return writeFile(filePath, `${contentString}\n`)
 }
