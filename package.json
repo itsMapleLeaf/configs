@@ -1,16 +1,18 @@
 {
   "name": "@itsmapleleaf/configs",
-  "type": "module",
+  "version": "2.0.0",
   "description": "my cool and awesome configurator of various things",
   "authors": "MapleLeaf",
-  "version": "2.0.0",
-  "files": [
-    "dist",
-    "assets",
-    "eslint",
-    "prettier",
-    "tsconfig.base.json"
-  ],
+  "type": "module",
+  "exports": {
+    "./eslint": "./.eslintrc.base.cjs",
+    "./prettier": "./.prettierrc.cjs",
+    "./tsconfig": "./tsconfig.base.json",
+    "./tsconfig.base": "./tsconfig.base.json"
+  },
+  "bin": {
+    "setup-configs": "./dist/main.js"
+  },
   "scripts": {
     "lint": "eslint --ext js,ts,tsx .",
     "format": "prettier --write .",
@@ -21,6 +23,13 @@
     "release": "pnpm build && release-it",
     "lint-fix": "pnpm lint -- --fix"
   },
+  "files": [
+    "dist",
+    "assets",
+    ".eslintrc.base.cjs",
+    ".prettierrc.cjs",
+    "tsconfig.base.json"
+  ],
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
@@ -54,10 +63,6 @@
   "resolutions": {
     "esbuild": "0.14.2"
   },
-  "bin": {
-    "setup-configs": "./dist/main.js"
-  },
-  "prettier": "./prettier",
   "publishConfig": {
     "access": "public"
   }
