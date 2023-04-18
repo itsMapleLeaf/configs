@@ -3,12 +3,7 @@ import { formatWithPrettier } from "../format.js"
 
 export const eslintFeature: Feature = {
   name: "ESLint (Linting)",
-  installDevDependencies: () => [
-    "eslint",
-    "@types/eslint",
-    "prettier",
-    "@rushstack/eslint-patch",
-  ],
+  installDevDependencies: () => ["eslint", "@types/eslint", "prettier"],
   addScripts: () => [
     { name: "lint", command: "eslint --ext js,ts,tsx ." },
     { name: "lint-fix", command: "pnpm lint -- --fix" },
@@ -21,10 +16,7 @@ export const eslintFeature: Feature = {
 
     const moduleString = `${context.selfPackageName}/eslint`
 
-    const eslintFile = [
-      `// @ts-expect-error: the eslint patch doesn't have types`,
-      `require("@rushstack/eslint-patch/modern-module-resolution")`,
-      ``,
+    const eslintConfigLines = [
       `/** @type {import('eslint').Linter.Config} */`,
       `module.exports = {`,
       `  extends: [require.resolve(${JSON.stringify(moduleString)})],`,
@@ -38,7 +30,10 @@ export const eslintFeature: Feature = {
     return [
       {
         path: ".eslintrc.cjs",
-        content: formatWithPrettier(eslintFile.join("\n"), ".eslintrc.cjs"),
+        content: formatWithPrettier(
+          eslintConfigLines.join("\n"),
+          ".eslintrc.cjs",
+        ),
       },
     ]
   },

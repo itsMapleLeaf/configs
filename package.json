@@ -40,7 +40,6 @@
     "type-fest": "^3.6.1"
   },
   "devDependencies": {
-    "@rushstack/eslint-patch": "^1.2.0",
     "@types/eslint": "^8.21.1",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.15.0",
