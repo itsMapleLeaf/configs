@@ -1,5 +1,5 @@
-// eslint-disable-next-line unicorn/prefer-module
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./{src,public}/**/*.{ts,tsx,html}"],
+  content: ["./{src,app}/**/*.{js,jsx,ts,tsx,html,astro}"],
   theme: {},
 }
