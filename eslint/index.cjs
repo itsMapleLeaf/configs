@@ -1,4 +1,3 @@
-// eslint-disable-next-line unicorn/prefer-module
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
   root: true,
