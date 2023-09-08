@@ -1,0 +1,9 @@
+{
+	"editor.defaultFormatter": "biomejs.biome",
+	"eslint.enable": false,
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": false,
+		"source.organizeImports.biome": true,
+		"source.fixAll": true
+	}
+}

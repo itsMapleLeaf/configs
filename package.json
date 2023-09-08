@@ -1,59 +1,61 @@
 {
-  "name": "@itsmapleleaf/configs",
-  "version": "4.0.0",
-  "description": "shared configs",
-  "authors": "MapleLeaf",
-  "type": "module",
-  "exports": {
-    "./prettier": "./prettier.config.mjs",
-    "./eslint": "./eslint.config.cjs",
-    "./tsconfig": "./tsconfig.json"
-  },
-  "files": [
-    "eslint.config.cjs",
-    "prettier.config.mjs",
-    "tsconfig.json"
-  ],
-  "scripts": {},
-  "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.6.0",
-    "@typescript-eslint/parser": "^6.6.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-astro": "^0.29.0",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier-plugin-astro": "^0.12.0",
-    "prettier-plugin-jsdoc": "^1.0.1",
-    "prettier-plugin-tailwindcss": "^0.5.4"
-  },
-  "devDependencies": {
-    "@types/eslint": "^8.44.2",
-    "@types/node": "^20.5.9",
-    "eslint": "^8.48.0",
-    "prettier": "^3.0.3",
-    "typescript": "^5.2.2"
-  },
-  "peerDependencies": {
-    "eslint": "^8",
-    "prettier": "^3",
-    "typescript": ">=5"
-  },
-  "peerDependenciesMeta": {
-    "eslint": {
-      "optional": true
-    },
-    "prettier": {
-      "optional": true
-    },
-    "typescript": {
-      "optional": true
-    }
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "eslintConfig": {
-    "extends": "./eslint.config.cjs"
-  }
+	"name": "@itsmapleleaf/configs",
+	"version": "4.0.0",
+	"description": "shared configs",
+	"authors": "MapleLeaf",
+	"type": "module",
+	"exports": {
+		"./prettier": "./prettier.config.mjs",
+		"./eslint": "./eslint.config.cjs",
+		"./tsconfig": "./tsconfig.json",
+		"./biome": "./biome.json"
+	},
+	"files": [
+		"eslint.config.cjs",
+		"prettier.config.mjs",
+		"tsconfig.json",
+		"biome.json"
+	],
+	"scripts": {
+		"lint": "biome check --apply ."
+	},
+	"dependencies": {
+		"@typescript-eslint/eslint-plugin": "^6.6.0",
+		"@typescript-eslint/parser": "^6.6.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-astro": "^0.29.0",
+		"eslint-plugin-jsx-a11y": "^6.7.1",
+		"eslint-plugin-react": "^7.33.2",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"prettier-plugin-astro": "^0.12.0",
+		"prettier-plugin-jsdoc": "^1.0.1",
+		"prettier-plugin-tailwindcss": "^0.5.4"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.1.2",
+		"@types/eslint": "^8.44.2",
+		"@types/node": "^20.5.9",
+		"eslint": "^8.48.0",
+		"prettier": "^3.0.3",
+		"typescript": "^5.2.2"
+	},
+	"peerDependencies": {
+		"eslint": "^8",
+		"prettier": "^3",
+		"typescript": ">=5"
+	},
+	"peerDependenciesMeta": {
+		"eslint": {
+			"optional": true
+		},
+		"prettier": {
+			"optional": true
+		},
+		"typescript": {
+			"optional": true
+		}
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }
