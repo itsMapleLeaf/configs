@@ -3,6 +3,7 @@ export default {
 	semi: false,
 	trailingComma: "all",
 	useTabs: true,
+	htmlWhitespaceSensitivity: "ignore",
 	plugins: [
 		"prettier-plugin-jsdoc",
 		"prettier-plugin-astro",
