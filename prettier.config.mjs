@@ -11,6 +11,12 @@ export default {
 	],
 	overrides: [
 		{
+			files: "package.json",
+			options: {
+				useTabs: false,
+			},
+		},
+		{
 			files: "*.astro",
 			options: {
 				parser: "astro",
