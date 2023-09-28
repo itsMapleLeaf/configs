@@ -1,8 +1,9 @@
 import containerQueries from "@tailwindcss/container-queries"
 import plugin from "tailwindcss/plugin"
 
-/** @satisfies {Partial<import("tailwindcss").Config>} */
+/** @satisfies {import("tailwindcss").Config} */
 const preset = {
+  content: [],
   theme: {
     extend: {
       minWidth: (utils) => utils.theme("width"),

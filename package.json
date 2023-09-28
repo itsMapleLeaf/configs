@@ -9,7 +9,10 @@
 		"./eslint": "./eslint.config.cjs",
 		"./tsconfig": "./tsconfig.json",
 		"./biome": "./biome.json",
-		"./tailwind-extensions": "./tailwind-extensions.mjs"
+		"./tailwind-extensions": {
+			"default": "./tailwind-extensions.mjs",
+			"types": "./tailwind-extensions.types.d.ts"
+		}
 	},
 	"files": [
 		"eslint.config.cjs",
