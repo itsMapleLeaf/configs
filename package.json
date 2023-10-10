@@ -16,7 +16,9 @@
 	},
 	"files": [
 		"eslint.config.cjs",
+		"eslint.d.ts",
 		"prettier.config.mjs",
+		"prettier.d.ts",
 		"tsconfig.json",
 		"biome.json",
 		"tailwind-extensions.mjs"
