@@ -5,8 +5,8 @@
 	"authors": "MapleLeaf",
 	"type": "module",
 	"exports": {
-		"./prettier": "./prettier.config.mjs",
-		"./eslint": "./eslint.config.cjs",
+		"./prettier": {"default": "./prettier.config.mjs","types":"./prettier.d.ts"},
+		"./eslint": {"default": "./eslint.config.cjs","types":"./eslint.d.ts"},
 		"./tsconfig": "./tsconfig.json",
 		"./biome": "./biome.json",
 		"./tailwind-extensions": {
