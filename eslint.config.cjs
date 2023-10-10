@@ -50,6 +50,7 @@ module.exports = {
 			"error",
 			{ ignorePrimitives: { string: true, boolean: true } },
 		],
+		"@typescript-eslint/no-throw-literal": "off",
 		"jsx-a11y/no-onchange": "off",
 		"no-console": ["warn", { allow: ["warn", "error", "info"] }],
 		"no-redeclare": "off",
