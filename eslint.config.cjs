@@ -48,7 +48,7 @@ module.exports = {
 		"@typescript-eslint/no-unsafe-argument": "warn",
 		"@typescript-eslint/prefer-nullish-coalescing": [
 			"error",
-			{ ignorePrimatives: { string: true, boolean: true } },
+			{ ignorePrimitives: { string: true, boolean: true } },
 		],
 		"jsx-a11y/no-onchange": "off",
 		"no-console": ["warn", { allow: ["warn", "error", "info"] }],
