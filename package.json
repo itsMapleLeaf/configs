@@ -6,18 +6,18 @@
 	"type": "module",
 	"exports": {
 		"./prettier": {
-			"default": "./prettier.config.mjs",
-			"types": "./prettier.d.ts"
+			"types": "./prettier.d.ts",
+			"default": "./prettier.config.mjs"
 		},
 		"./eslint": {
-			"default": "./eslint.config.cjs",
-			"types": "./eslint.d.ts"
+			"types": "./eslint.d.ts",
+			"default": "./eslint.config.cjs"
 		},
 		"./tsconfig": "./tsconfig.json",
 		"./biome": "./biome.json",
 		"./tailwind-extensions": {
-			"default": "./tailwind-extensions.mjs",
-			"types": "./tailwind-extensions.types.d.ts"
+			"types": "./tailwind-extensions.types.d.ts",
+			"default": "./tailwind-extensions.mjs"
 		}
 	},
 	"files": [
