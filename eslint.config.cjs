@@ -38,7 +38,13 @@ module.exports = {
 		"@typescript-eslint/no-confusing-void-expression": "off",
 		"@typescript-eslint/no-floating-promises": "warn",
 		"@typescript-eslint/no-redeclare": "warn",
-		"@typescript-eslint/no-unused-vars": ["warn", { args: "none","argsIgnorePattern": "^_" }],
+		"@typescript-eslint/no-unused-vars": [
+			"warn",
+			{
+				args: "none",
+				argsIgnorePattern: "^_",
+			},
+		],
 		"@typescript-eslint/no-empty-interface": "off",
 		"@typescript-eslint/no-import-type-side-effects": "error",
 		"@typescript-eslint/no-unsafe-return": "warn",
