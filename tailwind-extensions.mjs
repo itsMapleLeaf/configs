@@ -14,25 +14,44 @@ const preset = {
 	},
 	plugins: [
 		containerQueries,
+
 		plugin(function fluidCols(api) {
+			api.addBase({
+				":root": {
+					"--tw-fluid-cols-repeat": "auto-fill",
+				},
+			})
+
+			api.addUtilities({
+				".fluid-cols-auto-fill": {
+					"--tw-fluid-cols-repeat": "auto-fill",
+				},
+				".fluid-cols-auto-fit": {
+					"--tw-fluid-cols-repeat": "auto-fit",
+				},
+			})
+
 			api.matchUtilities(
 				{
 					"fluid-cols": (value) => ({
-						"grid-template-columns": `repeat(auto-fit, minmax(${value}, 1fr))`,
+						"grid-template-columns": `repeat(--tw-fluid-cols-repeat, minmax(${value}, 1fr))`,
 					}),
 				},
 				{ values: api.theme("width") },
 			)
 		}),
+
 		plugin(function size(api) {
 			api.matchUtilities(
 				{ s: (value) => ({ width: value, height: value }) },
 				{ values: { ...api.theme("width"), ...api.theme("height") } },
 			)
 		}),
+
 		plugin(function ariaCurrentPage(api) {
 			api.addVariant("aria-current-page", '&[aria-current="page"]')
 		}),
 	],
 }
+
 export default preset
