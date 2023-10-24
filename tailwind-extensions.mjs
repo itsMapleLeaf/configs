@@ -34,7 +34,7 @@ const preset = {
 			api.matchUtilities(
 				{
 					"fluid-cols": (value) => ({
-						"grid-template-columns": `repeat(--tw-fluid-cols-repeat, minmax(${value}, 1fr))`,
+						"grid-template-columns": `repeat(var(--tw-fluid-cols-repeat), minmax(${value}, 1fr))`,
 					}),
 				},
 				{ values: api.theme("width") },
