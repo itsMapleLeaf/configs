@@ -8,12 +8,12 @@
 		"rules": {
 			"recommended": true,
 			"correctness": {
-				"noUnusedVariables": "warn"
-			},
-			"nursery": {
-				"useGroupedTypeImport": "warn",
+				"noUnusedVariables": "warn",
 				"useHookAtTopLevel": "error",
 				"useExhaustiveDependencies": "error"
+			},
+			"nursery": {
+				"useGroupedTypeImport": "warn"
 			},
 			"style": {
 				"noNegationElse": "warn",
