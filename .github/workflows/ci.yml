@@ -30,7 +30,7 @@ jobs:
         run: pnpm install
 
       - name: Lint and format
-        run: pnpm run-p --continue-on-error lint-apply format build
+        run: pnpm run-p --continue-on-error lint-apply build
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
