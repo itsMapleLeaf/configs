@@ -1,37 +1,7 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-	"organizeImports": {
-		"enabled": true
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true,
-			"correctness": {
-				"noUnusedVariables": "warn",
-				"useHookAtTopLevel": "error",
-				"useExhaustiveDependencies": "error"
-			},
-			"nursery": {
-				"useGroupedTypeImport": "warn"
-			},
-			"style": {
-				"noNegationElse": "warn",
-				"useSingleCaseStatement": "warn"
-			}
-		}
-	},
-	"vcs": {
-		"enabled": true,
-		"clientKind": "git",
-		"useIgnoreFile": true
-	},
-	"formatter": {
-		"formatWithErrors": true
-	},
-	"javascript": {
-		"formatter": {
-			"semicolons": "asNeeded"
-		}
+	"extends": ["./biome.base.json"],
+	"files": {
+		"ignore": ["dist"]
 	}
 }

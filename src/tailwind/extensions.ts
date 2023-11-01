@@ -1,8 +1,8 @@
 import containerQueries from "@tailwindcss/container-queries"
-import plugin from "tailwindcss/plugin"
+import type { Config } from "tailwindcss"
+import plugin from "tailwindcss/plugin.js"
 
-/** @satisfies {import("tailwindcss").Config} */
-const preset = {
+export const tailwindExtensions = {
 	content: [],
 	theme: {
 		extend: {
@@ -52,6 +52,4 @@ const preset = {
 			api.addVariant("aria-current-page", '&[aria-current="page"]')
 		}),
 	],
-}
-
-export default preset
+} satisfies Config

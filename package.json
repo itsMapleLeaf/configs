@@ -5,20 +5,13 @@
 	"authors": "MapleLeaf",
 	"type": "module",
 	"exports": {
-		"./prettier": {
-			"types": "./prettier.d.ts",
-			"default": "./prettier.config.mjs"
-		},
-		"./eslint": {
-			"types": "./eslint.d.ts",
-			"default": "./eslint.config.cjs"
-		},
-		"./tsconfig": "./tsconfig.json",
-		"./biome": "./biome.json",
-		"./tailwind-extensions": {
-			"types": "./tailwind-extensions.types.d.ts",
-			"default": "./tailwind-extensions.mjs"
-		}
+		"./prettier": "./dist/prettier.config.js",
+		"./eslint": "./dist/eslint.config.cjs",
+		"./eslint-react": "./dist/eslint.config.react.cjs",
+		"./tailwind": "./dist/tailwind/index.js",
+		"./biome.json": "./biome.json",
+		"./tsconfig.bundler.json": "./tsconfig.bundler.json",
+		"./tsconfig.node.json": "./tsconfig.node.json"
 	},
 	"files": [
 		"eslint.config.cjs",
@@ -30,9 +23,11 @@
 		"tailwind-extensions.mjs"
 	],
 	"scripts": {
-		"lint": "run-s --continue-on-error lint:*",
-		"lint:types": "tsc -b",
-		"lint:biome": "biome check --apply ."
+		"dev": "tsc -b --watch",
+		"build": "del-cli dist && tsc -b",
+		"lint": "biome check .",
+		"lint-apply": "biome check . --apply",
+		"lint-apply-unsafe": "biome check . --apply-unsafe"
 	},
 	"dependencies": {
 		"@tailwindcss/container-queries": "^0.1.1",
@@ -52,6 +47,7 @@
 		"@biomejs/biome": "1.2.2",
 		"@types/eslint": "^8.44.4",
 		"@types/node": "^20.8.4",
+		"del-cli": "^5.1.0",
 		"eslint": "^8.51.0",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^3.0.3",
@@ -59,6 +55,7 @@
 		"typescript": "^5.2.2"
 	},
 	"peerDependencies": {
+		"@biomejs/biome": "^1",
 		"eslint": "^8",
 		"prettier": "^3",
 		"tailwindcss": ">=3",

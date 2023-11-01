@@ -1,5 +1,6 @@
-/** @type {import("eslint").Linter.Config} */
-module.exports = {
+import type { Linter } from "eslint"
+
+const config: Linter.Config = {
 	plugins: ["react"],
 	settings: {
 		react: { version: "detect" },
@@ -14,3 +15,5 @@ module.exports = {
 		},
 	],
 }
+
+export = config

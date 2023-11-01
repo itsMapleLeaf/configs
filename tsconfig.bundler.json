@@ -1,0 +1,7 @@
+{
+	"extends": "./tsconfig.node.json",
+	"compilerOptions": {
+		"allowImportingTsExtensions": true,
+		"moduleResolution": "Bundler"
+	}
+}

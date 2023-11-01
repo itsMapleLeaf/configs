@@ -1,4 +1,5 @@
-/** @type {import("prettier").Config} */
+import type { Config } from "prettier"
+
 export default {
 	semi: false,
 	trailingComma: "all",
@@ -24,4 +25,4 @@ export default {
 			},
 		},
 	],
-}
+} satisfies Config

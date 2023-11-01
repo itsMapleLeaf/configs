@@ -1,4 +1,4 @@
-name: lint
+name: ci
 on:
   push:
     branches: [main]
@@ -12,26 +12,25 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - uses: actions/cache@v3
-        with:
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-          path: |
-            node_modules
-            .eslintcache
-
-      - uses: pnpm/action-setup@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
           version: 8
 
-      - uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: "lts/*"
           cache: pnpm
 
-      - run: pnpm install
-      - run: pnpm run lint
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint and format
+        run: pnpm run-p --continue-on-error lint-apply format build
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
