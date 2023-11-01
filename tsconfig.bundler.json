@@ -2,6 +2,7 @@
 	"extends": "./tsconfig.node.json",
 	"compilerOptions": {
 		"allowImportingTsExtensions": true,
+		"module": "ESNext",
 		"moduleResolution": "Bundler"
 	}
 }
