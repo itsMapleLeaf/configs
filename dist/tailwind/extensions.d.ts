@@ -1,4 +1,3 @@
-import type { Config } from "tailwindcss";
 export declare const tailwindExtensions: {
     content: never[];
     theme: {
@@ -11,6 +10,6 @@ export declare const tailwindExtensions: {
     };
     plugins: {
         handler: import("tailwindcss/types/config.js").PluginCreator;
-        config?: Partial<Config> | undefined;
+        config?: Partial<import("tailwindcss/types/config.js").Config> | undefined;
     }[];
 };
