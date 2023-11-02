@@ -61,7 +61,11 @@ export function radixAnimations(config: RadixAnimationConfig) {
 
 			// add a utility that transitions in or out when [data-state] is open or closed respectively
 			api.addUtilities({
-				[`.radix-animation-${api.e(animationName)}[data-state=open]`]: {
+				[`.radix-animation-${api.e(
+					animationName,
+				)}[data-state=open], .radix-animation-${api.e(
+					animationName,
+				)}[data-state=delayed-open]`]: {
 					"animation-name": `${animationName}-enter`,
 					"animation-duration": `var(--tw-animation-duration, ${String(
 						api.theme("transitionDuration.DEFAULT"),
