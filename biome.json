@@ -3,5 +3,10 @@
 	"extends": ["./biome.base.json"],
 	"files": {
 		"ignore": ["dist"]
+	},
+	"javascript": {
+		"formatter": {
+			"semicolons": "asNeeded"
+		}
 	}
 }
