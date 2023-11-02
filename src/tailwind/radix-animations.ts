@@ -74,7 +74,7 @@ export function radixAnimations(config: RadixAnimationConfig) {
 					"animation-timing-function": `var(--tw-animation-timing-function, ${String(
 						api.theme("transitionTimingFunction.out"),
 					)})`,
-					"transform-origin": "var(--radix-popover-transform-origin)",
+					"transform-origin": "var(--radix-popper-transform-origin)",
 				},
 				[`.radix-animation-${api.e(animationName)}[data-state=closed]`]: {
 					"animation-name": `${animationName}-exit`,
@@ -85,7 +85,7 @@ export function radixAnimations(config: RadixAnimationConfig) {
 					"animation-timing-function": `var(--tw-animation-timing-function, ${String(
 						api.theme("transitionTimingFunction.in"),
 					)})`,
-					"transform-origin": "var(--radix-popover-transform-origin)",
+					"transform-origin": "var(--radix-popper-transform-origin)",
 				},
 			})
 		}
