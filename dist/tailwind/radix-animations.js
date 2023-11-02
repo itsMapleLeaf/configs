@@ -54,14 +54,14 @@ export function radixAnimations(config) {
                     "animation-duration": `var(--tw-animation-duration, ${String(api.theme("transitionDuration.DEFAULT"))})`,
                     "animation-fill-mode": "forwards",
                     "animation-timing-function": `var(--tw-animation-timing-function, ${String(api.theme("transitionTimingFunction.out"))})`,
-                    "transform-origin": "var(--radix-popover-transform-origin)",
+                    "transform-origin": "var(--radix-popper-transform-origin)",
                 },
                 [`.radix-animation-${api.e(animationName)}[data-state=closed]`]: {
                     "animation-name": `${animationName}-exit`,
                     "animation-duration": `var(--tw-animation-duration, ${String(api.theme("transitionDuration.DEFAULT"))})`,
                     "animation-fill-mode": "forwards",
                     "animation-timing-function": `var(--tw-animation-timing-function, ${String(api.theme("transitionTimingFunction.in"))})`,
-                    "transform-origin": "var(--radix-popover-transform-origin)",
+                    "transform-origin": "var(--radix-popper-transform-origin)",
                 },
             });
         }
