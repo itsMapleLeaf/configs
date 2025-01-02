@@ -13,15 +13,6 @@
 		"./tsconfig.bundler.json": "./tsconfig.bundler.json",
 		"./tsconfig.node.json": "./tsconfig.node.json"
 	},
-	"files": [
-		"eslint.config.cjs",
-		"eslint.d.ts",
-		"prettier.config.mjs",
-		"prettier.d.ts",
-		"tsconfig.json",
-		"biome.json",
-		"tailwind-extensions.mjs"
-	],
 	"scripts": {
 		"dev": "tsc -b --watch",
 		"build": "tsc -b",
